@@ -19,6 +19,7 @@ namespace RPGGame
             mymap.PrintWholeMap();
             MessageBox.Print("Telerik Team Yellow Bird");
             MessageBox.Print("Press Enter to Continue");
+
             Console.ReadLine();
             MessageBox.Clear();
             Console.ReadLine();

@@ -12,11 +12,11 @@ namespace RPGGame
         private static int used=0;
         public static void Print(string message)
         {
-            if(used==6)
+            if(used==5)
             {
                 Clear();
             }
-            Console.SetCursorPosition(0,37+used);
+            Console.SetCursorPosition(0,36+used);
             for (int i = 0; i < message.Length; i++)
             {
                 Console.Write(message[i]);
@@ -27,9 +27,9 @@ namespace RPGGame
 
         public static void Clear()
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
-                Console.SetCursorPosition(0, 37+i);
+                Console.SetCursorPosition(0, 36+i);
                 Console.Write("".PadRight(60, ' '));
             }
             used = 0;

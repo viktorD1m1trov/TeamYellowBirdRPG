@@ -6,8 +6,8 @@ namespace RPGGame
 {
     class Map
     {
-        private string[] map = new string[36];
-        private string[,] mapMatrix = new string[36, 60];
+        private string[] map = new string[35];
+        private string[,] mapMatrix = new string[35, 60];
 
         public string[,] MapMatrix
         {
@@ -22,7 +22,7 @@ namespace RPGGame
             StreamReader reader = new StreamReader(path);
 
 
-            for (int i = 0; i < 36; i++)
+            for (int i = 0; i < 35; i++)
             {
                 map[i] = reader.ReadLine();
                 for (int j = 0; j < 60; j++)
@@ -34,7 +34,7 @@ namespace RPGGame
 
         public void PrintWholeMap()
         {
-            for (int i = 0; i < 36; i++)
+            for (int i = 0; i < 35; i++)
             {
                 for (int j = 0; j < 60; j++)
                 {
@@ -50,7 +50,7 @@ namespace RPGGame
             {
                 for (int j = y-2; j <=y+2; j++)
                 {
-                    if (i > 1 && i < 36 && j > 1 && j < 60)
+                    if (i > 1 && i < 35 && j > 1 && j < 60)
                     {
                         PrintColor(i, j);
                     }

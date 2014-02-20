@@ -10,15 +10,15 @@ namespace RPGGame
     {
         public static void Justify()
         {
-            Console.WindowHeight = 43;
-            Console.WindowWidth = 83;
-            Console.SetBufferSize(83, 43);
+            Console.WindowHeight = 41;
+            Console.WindowWidth = 81;
+            Console.SetBufferSize(81, 41);
             Console.CursorVisible = false;
         }
 
         public static void PrintBorders()
         {
-            for (int i = 0; i <43; i++)
+            for (int i = 0; i <41; i++)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.SetCursorPosition(60, i);
@@ -27,7 +27,7 @@ namespace RPGGame
                 Console.ResetColor();
             }
 
-            for (int i = 60; i < 83; i++)
+            for (int i = 60; i < 81; i++)
             {
                 Console.SetCursorPosition(i, 21);
                 Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -38,10 +38,10 @@ namespace RPGGame
 
             for (int i = 0; i < 61; i++)
             {
-                Console.SetCursorPosition(i, 36);
+                Console.SetCursorPosition(i, 35);
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.Write("#");
-                Console.SetCursorPosition(i, 36);
+                Console.SetCursorPosition(i, 35);
                 Console.ResetColor();
             }
         }
