@@ -13,7 +13,7 @@ namespace RPGGame
             Map mymap = new Map("60map.txt");
 
 
-            //TOVA E TESTOV KOMENTAR S CEL PROVERKA NA RABOTATA S GITHUB.......
+            //TOVA E TESTOV KOMENTAR S CEL PROVERKA NA RABOTATA S GITHUB.......==
             
 
             mymap.PrintWholeMap();
