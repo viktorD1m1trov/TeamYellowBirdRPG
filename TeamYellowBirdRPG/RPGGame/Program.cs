@@ -14,7 +14,7 @@ namespace RPGGame
 
 
             //TOVA E TESTOV KOMENTAR S CEL PROVERKA NA RABOTATA S GITHUB.......==
-            
+            // test OK ... - lenchev            
 
             mymap.PrintWholeMap();
             MessageBox.Print("Telerik Team Yellow Bird");
