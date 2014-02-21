@@ -12,6 +12,10 @@ namespace RPGGame
             ConsoleClass.PrintBorders();
             Map mymap = new Map("60map.txt");
 
+
+            //TOVA E TESTOV KOMENTAR S CEL PROVERKA NA RABOTATA S GITHUB.......==
+            
+
             mymap.PrintWholeMap();
             MessageBox.Print("Telerik Team Yellow Bird");
             MessageBox.Print("Press Enter to Continue");
