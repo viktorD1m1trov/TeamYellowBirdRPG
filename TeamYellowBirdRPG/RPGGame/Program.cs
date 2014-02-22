@@ -8,10 +8,12 @@ namespace RPGGame
     {
         static void Main(string[] args)
         {
-            ConsoleClass.Justify();
-
+            ConsoleClass.SetConsoleSize(); // old name Justify
             
             Map mymap = new Map("60map.txt");
+
+            // printing intro page
+            Intro.PrintYellowBird();
 
             string heroName=Intro.Name();
             Console.Clear();
