@@ -45,6 +45,10 @@
   <ItemGroup>
     <Compile Include="Alive.cs" />
     <Compile Include="ConsoleClass.cs" />
+    <Compile Include="Coordinates.cs" />
+    <Compile Include="Hero.cs" />
+    <Compile Include="IAlive.cs" />
+    <Compile Include="Intro.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MessageBox.cs" />
     <Compile Include="Program.cs" />

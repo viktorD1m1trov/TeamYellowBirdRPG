@@ -9,6 +9,10 @@ namespace RPGGame
         private string[] map = new string[35];
         private string[,] mapMatrix = new string[35, 60];
 
+        //TODO: ADD A BOOL MATRIX TO CHECK IF HAS BEEN THERE 
+
+        //ADD A BOOL RETURNING METHOD, THAT YOU GIVE X and Y, AND RETURNS IF THE HERO HAS BEEN THERE                    public bool WasVisited(int x, int y)
+        //ADD A BOOL RETURNING METHOD, THAT YOU GIVE X and Y, AND RETURNS IF THE POSITION AT X and Y CAN BE STEPPED ON  public bool CanBeStepped(int x, int y)
         public string[,] MapMatrix
         {
             get
@@ -50,7 +54,7 @@ namespace RPGGame
             {
                 for (int j = y-2; j <=y+2; j++)
                 {
-                    if (i > 1 && i < 35 && j > 1 && j < 60)
+                    if (i >=0 && i < 35 && j >=0 && j < 60)
                     {
                         PrintColor(i, j);
                     }
