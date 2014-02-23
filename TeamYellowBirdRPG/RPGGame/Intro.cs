@@ -19,6 +19,13 @@
             Console.WriteLine("Variant Two... Press ENTER to continue...");
             Console.ReadLine();
             Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(bird3);
+            Console.ResetColor();
+            Console.WriteLine("Variant Three... Press ENTER to continue...");
+            Console.ReadLine();
+            Console.Clear();
         }
 
         // TODO - should be putted in to external txt file
@@ -88,30 +95,39 @@
 
                
 ";
-        //public static void PrintYellowBird()
-        //{
-        //    Console.SetCursorPosition(0, Console.WindowHeight / 2-9);
-        //    Console.ForegroundColor = ConsoleColor.Yellow;
-        //    Console.WriteLine(                                     
-        //            "                                 $$$$                     \n"+                    
-        //            "                               $$$$$$$                    \n"+                   
-        //            "                              $$ $$$$$$                   \n"+                   
-        //            "                         $$$$$$$$$$$$$$                   \n"+                   
-        //            "                         $$$$$$$$$$$$$$                   \n"+                    
-        //            "                              $$$$$$$$                    \n"+                    
-        //            "                               $$$$$$    $$$$$            \n"+                    
-        //            "                                 $$$$  $$$$$$$$$          \n"+                     
-        //            "                                $$$$$$$$$$$$$$$$$$        \n"+                     
-        //            "                                $$$$$$$$$$$$$$$$$$$$      \n"+                     
-        //            "                                $$$$$$$$$$$$$$$$$$$$$$$$  \n"+                     
-        //            "                                $$$$$$$$$$$$$$$$$$$$$$$   \n"+                    
-        //            "                                  $$$$$$$$$$$$$$$$$$      \n"+                    
-        //            "                                    $$$$$$$$$$$$$$        \n"+                    
-        //            "                                         $$               \n"+                    
-        //            "                                         $$               \n"+                    
-        //            "                                         $$               \n"+                    
-        //            "                                      $$$$$$              \n" );
-        //    Console.ResetColor();
-        //}
+
+        const string bird3 = @"
+                
+
+
+
+                                 $$$$                    
+                               $$$$$$$                   
+                              $$ $$$$$$                  
+                         $$$$$$$$$$$$$$                  
+                         $$$$$$$$$$$$$$                  
+                              $$$$$$$$                   
+                               $$$$$$    $$$$$           
+                                 $$$$  $$$$$$$$$         
+                                $$$$$$$$$$$$$$$$$$       
+                                $$$$$$$$$$$$$$$$$$$$     
+                                $$$$$$$$$$$$$$$$$$$$$$$$ 
+                                $$$$$$$$$$$$$$$$$$$$$$$  
+                                  $$$$$$$$$$$$$$$$$$     
+                                    $$$$$$$$$$$$$$       
+                                         $$              
+                                         $$              
+                                         $$              
+                                      $$$$$$             
+                
+              __   __   _ _                 ____  _         _ 
+              \ \ / /__| | | _____      __ | __ )(_)_ __ __| |
+               \ V / _ \ | |/ _ \ \ /\ / / |  _ \| | '__/ _` |
+                | |  __/ | | (_) \ V  V /  | |_) | | | | (_| |
+                |_|\___|_|_|\___/ \_/\_/   |____/|_|_|  \__,_|
+                                                                
+
+
+";
     }
 }

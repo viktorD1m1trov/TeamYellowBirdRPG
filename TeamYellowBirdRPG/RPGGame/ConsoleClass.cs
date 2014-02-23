@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RPGGame
+﻿namespace RPGGame
 {
+    using System;
+
     public static class ConsoleClass
     {
         public const byte ConsoleHeight = 41;
