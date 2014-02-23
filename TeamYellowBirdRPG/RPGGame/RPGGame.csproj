@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Alive.cs" />
     <Compile Include="ConsoleClass.cs" />
-    <Compile Include="Coordinates.cs" />
+    <Compile Include="Coordinates.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Hero.cs" />
     <Compile Include="IAlive.cs" />
     <Compile Include="Intro.cs" />

@@ -19,7 +19,7 @@ namespace RPGGame
             Map mymap = new Map("60map.txt");
             ConsoleClass.PrintBorders();
             
-            mymap.PrintAroundPoint(myHero.Position.x, myHero.Position.y);
+            mymap.PrintAroundPoint(myHero.Position.X, myHero.Position.Y);
             myHero.PrintHero();
 
             while (true)
@@ -33,22 +33,22 @@ namespace RPGGame
 
                     if (key.Key == ConsoleKey.UpArrow)
                     {
-                        myHero.Position.x--; //here needs to be the method StepUp(), that uses the method map.CanBeStepped()!!! 
+                        myHero.Position.X--; //here needs to be the method StepUp(), that uses the method map.CanBeStepped()!!! 
                     }
                     else if (key.Key == ConsoleKey.DownArrow)           //TODO: MOVE ALL THIS METHODS IN THE HERO CLASS and check if the position is avaliable to step by using
                     {                                                   //map.CanBeStepped()    
-                        myHero.Position.x++;
+                        myHero.Position.X++;
                     }
                     else if (key.Key == ConsoleKey.LeftArrow)
                     {
-                        myHero.Position.y--;
+                        myHero.Position.Y--;
                     }
                     else if (key.Key == ConsoleKey.RightArrow)
                     {
-                        myHero.Position.y++;
+                        myHero.Position.Y++;
                     }
 
-                    mymap.PrintAroundPoint(myHero.Position.x, myHero.Position.y);
+                    mymap.PrintAroundPoint(myHero.Position.X, myHero.Position.Y);
                     myHero.PrintHero();
                 }
             }

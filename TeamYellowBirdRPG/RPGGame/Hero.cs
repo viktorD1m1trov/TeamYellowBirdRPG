@@ -38,9 +38,9 @@ namespace RPGGame
 
         public void PrintHero()
         {
-            Console.SetCursorPosition(this.Position.y, this.Position.x);
+            Console.SetCursorPosition(this.Position.Y, this.Position.X);
             Console.Write('@');
-            Console.SetCursorPosition(this.Position.y, this.Position.x);
+            Console.SetCursorPosition(this.Position.Y, this.Position.X);
         }
 
         public static string EnterName()

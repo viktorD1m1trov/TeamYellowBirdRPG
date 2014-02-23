@@ -8,11 +8,11 @@ namespace RPGGame
 {
     public static class ConsoleClass
     {
-        private const int ConsoleHeight = 41;
-        private const int ConsoleWidth = 81;
-        private const byte MidleInterfaceLinePosition = 21;
-        private const byte VerticalLinePosition = 60;
-        private const byte HorizontalLinePosition = 35;
+        public const byte ConsoleHeight = 41;
+        public const byte ConsoleWidth = 81;
+        public const byte MidleInterfaceLinePosition = 21;
+        public const byte VerticalLinePosition = 60;
+        public const byte HorizontalLinePosition = 35;
 
         public static void SetConsoleSize()
         {
