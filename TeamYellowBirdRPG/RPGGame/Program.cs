@@ -20,9 +20,13 @@ namespace RPGGame
 
             Map mymap = new Map(MapPath);
             ConsoleClass.PrintBorders();
-            
+
+
             mymap.PrintAroundPoint(myHero.Position.X, myHero.Position.Y);
             myHero.PrintHero();
+            MessageBox.Print("Hello, " + myHero.Name);
+            MessageBox.Print("This is  Team Yellow Bird's RPG Game");
+            MessageBox.Print("Enjoy !");
 
             while (true)
             {
@@ -79,8 +83,7 @@ namespace RPGGame
             // test OK ... - lenchev            
 
             //mymap.PrintWholeMap();
-            MessageBox.Print("Hello, " + myHero.Name);
-            MessageBox.Print("This is  Team Yellow Bird's RPG Game");
+
             
             Console.ReadLine();
             MessageBox.Clear();

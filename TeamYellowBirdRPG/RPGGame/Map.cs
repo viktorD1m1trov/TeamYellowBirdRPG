@@ -124,6 +124,26 @@ using System.IO;
                     }
                 }
             }
+            //for (int i = x - 1; i <= x + 1; i++)
+            //{
+            //    for (int j = y - 5; j <= y + 5; j++)
+            //    {
+            //        if (i >= 0 && i < ConsoleClass.HorizontalLinePosition && j >= 0 && j < ConsoleClass.VerticalLinePosition)
+            //        {
+            //            PrintColor(i, j);
+            //        }
+            //    }
+            //}
+            //for (int i = x - 5; i <= x + 5; i++)
+            //{
+            //    for (int j = y - 1; j <= y + 1; j++)
+            //    {
+            //        if (i >= 0 && i < ConsoleClass.HorizontalLinePosition && j >= 0 && j < ConsoleClass.VerticalLinePosition)
+            //        {
+            //            PrintColor(i, j);
+            //        }
+            //    }
+            //}
         }
 
         public void PrintColor(int x, int y)
