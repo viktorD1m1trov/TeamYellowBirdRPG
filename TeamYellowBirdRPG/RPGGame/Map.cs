@@ -8,6 +8,7 @@ namespace RPGGame
     {
         private string[] map = new string[35];
         private string[,] mapMatrix = new string[35, 60];
+        private bool[,] visited = new bool[35, 60];
 
         //TODO: ADD A BOOL MATRIX TO CHECK IF HAS BEEN THERE 
 
@@ -18,6 +19,14 @@ namespace RPGGame
             get
             {
                 return this.mapMatrix;
+            }
+        }
+
+        public bool[,] Visited
+        {
+            get
+            {
+                return this.visited;
             }
         }
 
@@ -48,13 +57,52 @@ namespace RPGGame
             }
         }
 
+        public bool CanBeStepped(int x,int y)
+        {
+            if (x >= 0 && x < 35 & y >= 0 && y < 60)
+            {
+                if (this.MapMatrix[x, y] == "0")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         public void PrintAroundPoint(int x,int y)
         {
-            for (int i = x-2; i <=x+2; i++)
+            for (int i = x-3; i <=x+3; i++)
             {
-                for (int j = y-2; j <=y+2; j++)
+                for (int j = y-3; j <=y+3; j++)
                 {
                     if (i >=0 && i < 35 && j >=0 && j < 60)
+                    {
+                        PrintColor(i, j);
+                    }
+                }
+            }
+            for (int i = x - 4; i <= x + 4; i++)
+            {
+                for (int j = y - 2; j <= y + 2; j++)
+                {
+                    if (i >= 0 && i < 35 && j >= 0 && j < 60)
+                    {
+                        PrintColor(i, j);
+                    }
+                }
+            }
+            for (int i = x - 2; i <= x + 2; i++)
+            {
+                for (int j = y - 4; j <= y + 4; j++)
+                {
+                    if (i >= 0 && i < 35 && j >= 0 && j < 60)
                     {
                         PrintColor(i, j);
                     }

@@ -12,14 +12,35 @@ namespace RPGGame
         {
             string name;
             Console.SetCursorPosition((Console.BufferWidth - 25)/2, Console.BufferHeight / 2);
-            Console.WriteLine("Please, input your name: ");
+            Console.Write("Please, input your name: ");
             name = Console.ReadLine();
             return name;
         }
 
         public static void PrintYellowBird()
         {
-            //TODO: write code that paints big yellow bird ont the whole console
+            Console.SetCursorPosition(0, Console.WindowHeight / 2-9);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(                                     
+                    "                                 $$$$                     \n"+                    
+                    "                               $$$$$$$                    \n"+                   
+                    "                              $$ $$$$$$                   \n"+                   
+                    "                         $$$$$$$$$$$$$$                   \n"+                   
+                    "                         $$$$$$$$$$$$$$                   \n"+                    
+                    "                              $$$$$$$$                    \n"+                    
+                    "                               $$$$$$    $$$$$            \n"+                    
+                    "                                 $$$$  $$$$$$$$$          \n"+                     
+                    "                                $$$$$$$$$$$$$$$$$$        \n"+                     
+                    "                                $$$$$$$$$$$$$$$$$$$$      \n"+                     
+                    "                                $$$$$$$$$$$$$$$$$$$$$$$$  \n"+                     
+                    "                                $$$$$$$$$$$$$$$$$$$$$$$   \n"+                    
+                    "                                  $$$$$$$$$$$$$$$$$$      \n"+                    
+                    "                                    $$$$$$$$$$$$$$        \n"+                    
+                    "                                         $$               \n"+                    
+                    "                                         $$               \n"+                    
+                    "                                         $$               \n"+                    
+                    "                                      $$$$$$              \n" );
+            Console.ResetColor();
         }
     }
 }

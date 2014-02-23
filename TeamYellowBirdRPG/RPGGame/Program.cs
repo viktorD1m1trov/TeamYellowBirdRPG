@@ -9,7 +9,9 @@ namespace RPGGame
         static void Main(string[] args)
         {
             ConsoleClass.Justify();
-
+            Intro.PrintYellowBird();
+            Console.ReadLine();
+            Console.Clear();
             
             Map mymap = new Map("60map.txt");
 
@@ -23,7 +25,8 @@ namespace RPGGame
             while(true)
             {
                 
-                //TODO:Make methods MoveUp,MoveDown,MoveLeft,MoveRight in the Alive class !!!!!!!
+                //TODO:Make methods MoveUp,MoveDown,MoveLeft,MoveRight in the Alive class (abstract in the Alive class, also in the IAlive and in Hero class)!!!!!!!
+                //Methods should use mymap.CanBeStepped() method !!!!
 
                 if(Console.KeyAvailable)
                 {
@@ -31,22 +34,38 @@ namespace RPGGame
 
                     if(key.Key==ConsoleKey.UpArrow) 
                     {
-                        myHero.Position.x--; //here needs to be the method StepUp(), that uses the method map.CanBeStepped()!!! 
+                        if (mymap.CanBeStepped(myHero.Position.x - 1, myHero.Position.y))
+                        {
+                            myHero.Position.x--; 
+                        }
                     }
                     else if (key.Key == ConsoleKey.DownArrow)           //TODO: MOVE ALL THIS METHODS IN THE HERO CLASS and check if the position is avaliable to step by using
-                    {                                                   //map.CanBeStepped()    
-                        myHero.Position.x++;
+                    {                                                   //mymap.CanBeStepped();
+                        if (mymap.CanBeStepped(myHero.Position.x + 1, myHero.Position.y))
+                        {
+                            myHero.Position.x++;
+                        }
                     }
                     else if (key.Key == ConsoleKey.LeftArrow)
                     {
-                        myHero.Position.y--;
+                        if (mymap.CanBeStepped(myHero.Position.x , myHero.Position.y-1))
+                        {
+                            myHero.Position.y--;
+                        }
                     }
                     else if (key.Key == ConsoleKey.RightArrow)
                     {
-                        myHero.Position.y++;
+                        if (mymap.CanBeStepped(myHero.Position.x, myHero.Position.y + 1))
+                        {
+                            myHero.Position.y++;
+                        }
                     }
 
-                    mymap.PrintAroundPoint(myHero.Position.x, myHero.Position.y);
+                    if (mymap.Visited[myHero.Position.x, myHero.Position.y] == false)
+                    {
+                        mymap.PrintAroundPoint(myHero.Position.x, myHero.Position.y);
+                        mymap.Visited[myHero.Position.x, myHero.Position.y] = true;
+                    }
                     myHero.PrintHero();
                 }
             }
