@@ -8,7 +8,6 @@ namespace RPGGame
 {
     public class Hero : Alive, IAlive
     {
-
         public override string Name
         {
             get
@@ -42,6 +41,15 @@ namespace RPGGame
             Console.SetCursorPosition(this.Position.y, this.Position.x);
             Console.Write('@');
             Console.SetCursorPosition(this.Position.y, this.Position.x);
+        }
+
+        public static string EnterName()
+        {
+            Console.SetCursorPosition((Console.BufferWidth - 65), Console.BufferHeight / 2);
+            Console.Write("Please, input your name: ");
+            string name = Console.ReadLine();
+            Console.Clear();
+            return name;
         }
         
         //OVERRIDE MOVEMENT METHODS HERE

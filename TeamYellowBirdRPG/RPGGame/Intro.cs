@@ -1,23 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace RPGGame
+﻿namespace RPGGame
 {
+    using System;
+
     public static class Intro
     {
-        public static string Name()
-        {
-            string name;
-            Console.SetCursorPosition((Console.BufferWidth - 65), Console.BufferHeight / 2);
-            Console.Write("Please, input your name: ");
-            name = Console.ReadLine();
-            return name;
-        }
-
         public static void PrintYellowBird()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -35,7 +21,7 @@ namespace RPGGame
             Console.Clear();
         }
 
-        // TODO - should be putted in to file
+        // TODO - should be putted in to external txt file
         const string bird1 = @"
                 
 

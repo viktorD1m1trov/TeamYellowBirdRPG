@@ -4,34 +4,34 @@ using System.Windows.Forms;
 
 namespace RPGGame
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             ConsoleClass.SetConsoleSize(); // old name Justify
-            
-            Map mymap = new Map("60map.txt");
 
             // printing intro page
             Intro.PrintYellowBird();
 
-            string heroName=Intro.Name();
-            Console.Clear();
+            string heroName = Hero.EnterName();  // moved from class Intro to Hero + renamed
             Hero myHero = new Hero(heroName, new Coordinates(18, 34), 100);
+
+            Map mymap = new Map("60map.txt");
             ConsoleClass.PrintBorders();
+            
             mymap.PrintAroundPoint(myHero.Position.x, myHero.Position.y);
             myHero.PrintHero();
-            
-            while(true)
+
+            while (true)
             {
-                
+
                 //TODO:Make methods MoveUp,MoveDown,MoveLeft,MoveRight in the Alive class !!!!!!!
 
-                if(Console.KeyAvailable)
+                if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
 
-                    if(key.Key==ConsoleKey.UpArrow) 
+                    if (key.Key == ConsoleKey.UpArrow)
                     {
                         myHero.Position.x--; //here needs to be the method StepUp(), that uses the method map.CanBeStepped()!!! 
                     }
@@ -59,9 +59,9 @@ namespace RPGGame
             // test OK ... - lenchev            
 
             //mymap.PrintWholeMap();
-            MessageBox.Print("Hello, "+myHero.Name);
+            MessageBox.Print("Hello, " + myHero.Name);
             MessageBox.Print("This is  Team Yellow Bird's RPG Game");
-            
+
             Console.ReadLine();
             MessageBox.Clear();
             Console.ReadLine();
