@@ -1,66 +1,87 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace RPGGame
+﻿namespace RPGGame
 {
-    class Map
-    {
-        private string[] map = new string[35];
-        private string[,] mapMatrix = new string[35, 60];
+    using System;
+    using System.IO;
 
-        //TODO: ADD A BOOL MATRIX TO CHECK IF HAS BEEN THERE 
+    public class Map
+    {
+        private const byte PrintAreaAroundHero = 3;
+
+        private string[] currentLine;  // old name map
+        private string[,] mapMatrix;
+        private bool[,] wasVisited;
+
+        //ADD A BOOL MATRIX TO CHECK IF HAS BEEN THERE 
+        // TO DO: integrate the above
 
         //ADD A BOOL RETURNING METHOD, THAT YOU GIVE X and Y, AND RETURNS IF THE HERO HAS BEEN THERE                    public bool WasVisited(int x, int y)
         //ADD A BOOL RETURNING METHOD, THAT YOU GIVE X and Y, AND RETURNS IF THE POSITION AT X and Y CAN BE STEPPED ON  public bool CanBeStepped(int x, int y)
+
         public string[,] MapMatrix
         {
             get
             {
-                return this.mapMatrix;
+                return (string[,])this.mapMatrix.Clone(); //Returning new matrix to protect the original
+            }
+        }
+
+        public string[,] WasVisited
+        {
+            get
+            {
+                return (string[,])this.wasVisited.Clone(); //Returning new matrix to protect the original
             }
         }
 
         public Map(string path)
         {
+            currentLine = new string[ConsoleClass.HorizontalLinePosition];
+            mapMatrix = new string[ConsoleClass.HorizontalLinePosition, ConsoleClass.VerticalLinePosition];
+            wasVisited = new bool[ConsoleClass.HorizontalLinePosition, ConsoleClass.VerticalLinePosition];
+
             StreamReader reader = new StreamReader(path);
 
-
-            for (int i = 0; i < 35; i++)
+            using (reader)
             {
-                map[i] = reader.ReadLine();
-                for (int j = 0; j < 60; j++)
+                for (int i = 0; i < ConsoleClass.HorizontalLinePosition; i++)
                 {
-                    mapMatrix[i, j] = map[i][j].ToString();
+                    currentLine[i] = reader.ReadLine();
+                    for (int j = 0; j < ConsoleClass.VerticalLinePosition; j++)
+                    {
+                        mapMatrix[i, j] = currentLine[i][j].ToString();
+                    }
                 }
             }
         }
 
+
+        // TO DO: Extract all print methods to separate class
         public void PrintWholeMap()
         {
-            for (int i = 0; i < 35; i++)
+            for (int i = 0; i < ConsoleClass.HorizontalLinePosition; i++)
             {
-                for (int j = 0; j < 60; j++)
+                for (int j = 0; j < ConsoleClass.VerticalLinePosition; j++)
                 {
                     PrintColor(i, j);
                 }
-                
+
             }
         }
 
-        public void PrintAroundPoint(int x,int y)
+        public void PrintAroundPoint(int x, int y)
         {
-            for (int i = x-2; i <=x+2; i++)
+            for (int i = x - PrintAreaAroundHero; i <= x + PrintAreaAroundHero; i++)
             {
-                for (int j = y-2; j <=y+2; j++)
+                for (int j = y - PrintAreaAroundHero; j <= y + PrintAreaAroundHero; j++)
                 {
-                    if (i >=0 && i < 35 && j >=0 && j < 60)
+                    if (i >= 0 && i < ConsoleClass.HorizontalLinePosition && j >= 0 && j < ConsoleClass.VerticalLinePosition)
                     {
                         PrintColor(i, j);
                     }
                 }
             }
         }
+
         public void PrintColor(int x, int y)
         {
             Console.SetCursorPosition(y, x);
@@ -84,6 +105,7 @@ namespace RPGGame
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.Write(" ");
             }
+
             Console.ResetColor();
         }
     }

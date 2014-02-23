@@ -53,6 +53,7 @@
     <Compile Include="Intro.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MessageBox.cs" />
+    <Compile Include="Print.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

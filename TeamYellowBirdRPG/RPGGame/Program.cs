@@ -6,6 +6,8 @@ namespace RPGGame
 {
     public class Program
     {
+        public const string MapPath = "60map.txt";
+
         public static void Main()
         {
             ConsoleClass.SetConsoleSize(); // old name Justify
@@ -16,7 +18,7 @@ namespace RPGGame
             string heroName = Hero.EnterName();  // moved from class Intro to Hero + renamed
             Hero myHero = new Hero(heroName, new Coordinates(18, 34), 100);
 
-            Map mymap = new Map("60map.txt");
+            Map mymap = new Map(MapPath);
             ConsoleClass.PrintBorders();
             
             mymap.PrintAroundPoint(myHero.Position.X, myHero.Position.Y);
