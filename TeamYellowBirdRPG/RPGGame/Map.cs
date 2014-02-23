@@ -1,55 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace RPGGame
+{
+using System;
 using System.IO;
 
-namespace RPGGame
-{
-    class Map
+    public class Map
     {
-        private string[] map = new string[35];
-        private string[,] mapMatrix = new string[35, 60];
-        private bool[,] visited = new bool[35, 60];
+    //class Map
+    //{
+        //private string[] map = new string[35];
+        //private string[,] mapMatrix = new string[35, 60];
+        //private bool[,] visited = new bool[35, 60];
 
-        //TODO: ADD A BOOL MATRIX TO CHECK IF HAS BEEN THERE 
+        private string[] currentLine;  // old name map
+        private string[,] mapMatrix;
+        private bool[,] wasVisited;
+
+        //ADD A BOOL MATRIX TO CHECK IF HAS BEEN THERE 
+        // TO DO: integrate the above
 
         //ADD A BOOL RETURNING METHOD, THAT YOU GIVE X and Y, AND RETURNS IF THE HERO HAS BEEN THERE                    public bool WasVisited(int x, int y)
         //ADD A BOOL RETURNING METHOD, THAT YOU GIVE X and Y, AND RETURNS IF THE POSITION AT X and Y CAN BE STEPPED ON  public bool CanBeStepped(int x, int y)
+
         public string[,] MapMatrix
         {
             get
             {
-                return this.mapMatrix;
+                return (string[,])this.mapMatrix.Clone(); //Returning new matrix to protect the original
             }
         }
 
-        public bool[,] Visited
+        public bool[,] WasVisited
         {
             get
             {
-                return this.visited;
+                return (bool[,])this.wasVisited.Clone(); //Returning new matrix to protect the original
             }
         }
 
         public Map(string path)
         {
+            currentLine = new string[ConsoleClass.HorizontalLinePosition];
+            mapMatrix = new string[ConsoleClass.HorizontalLinePosition, ConsoleClass.VerticalLinePosition];
+            wasVisited = new bool[ConsoleClass.HorizontalLinePosition, ConsoleClass.VerticalLinePosition];
+
             StreamReader reader = new StreamReader(path);
 
-
-            for (int i = 0; i < 35; i++)
+            using (reader)
             {
-                map[i] = reader.ReadLine();
-                for (int j = 0; j < 60; j++)
+                for (int i = 0; i < ConsoleClass.HorizontalLinePosition; i++)
+            {
+                    currentLine[i] = reader.ReadLine();
+                    for (int j = 0; j < ConsoleClass.VerticalLinePosition; j++)
                 {
-                    mapMatrix[i, j] = map[i][j].ToString();
+                        mapMatrix[i, j] = currentLine[i][j].ToString();
+                    }
                 }
             }
         }
 
+
+        // TO DO: Extract all print methods to separate class
         public void PrintWholeMap()
         {
-            for (int i = 0; i < 35; i++)
+            for (int i = 0; i < ConsoleClass.HorizontalLinePosition; i++)
             {
-                for (int j = 0; j < 60; j++)
+                for (int j = 0; j < ConsoleClass.VerticalLinePosition; j++)
                 {
                     PrintColor(i, j);
                 }
@@ -57,9 +72,9 @@ namespace RPGGame
             }
         }
 
-        public bool CanBeStepped(int x,int y)
+        public bool CanBeStepped(int x, int y)
         {
-            if (x >= 0 && x < 35 & y >= 0 && y < 60)
+            if (x >= 0 && x < ConsoleClass.HorizontalLinePosition & y >= 0 && y < ConsoleClass.VerticalLinePosition)
             {
                 if (this.MapMatrix[x, y] == "0")
                 {
@@ -73,6 +88,7 @@ namespace RPGGame
             else
             {
                 return false;
+
             }
 
         }
@@ -82,7 +98,7 @@ namespace RPGGame
             {
                 for (int j = y-3; j <=y+3; j++)
                 {
-                    if (i >=0 && i < 35 && j >=0 && j < 60)
+                    if (i >= 0 && i < ConsoleClass.HorizontalLinePosition && j >= 0 && j < ConsoleClass.VerticalLinePosition)
                     {
                         PrintColor(i, j);
                     }
@@ -92,7 +108,7 @@ namespace RPGGame
             {
                 for (int j = y - 2; j <= y + 2; j++)
                 {
-                    if (i >= 0 && i < 35 && j >= 0 && j < 60)
+                    if (i >= 0 && i < ConsoleClass.HorizontalLinePosition && j >= 0 && j < ConsoleClass.VerticalLinePosition)
                     {
                         PrintColor(i, j);
                     }
@@ -102,13 +118,14 @@ namespace RPGGame
             {
                 for (int j = y - 4; j <= y + 4; j++)
                 {
-                    if (i >= 0 && i < 35 && j >= 0 && j < 60)
+                    if (i >= 0 && i < ConsoleClass.HorizontalLinePosition && j >= 0 && j < ConsoleClass.VerticalLinePosition)
                     {
                         PrintColor(i, j);
                     }
                 }
             }
         }
+
         public void PrintColor(int x, int y)
         {
             Console.SetCursorPosition(y, x);
@@ -132,6 +149,7 @@ namespace RPGGame
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.Write(" ");
             }
+
             Console.ResetColor();
         }
     }

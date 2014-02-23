@@ -4,69 +4,72 @@ using System.Windows.Forms;
 
 namespace RPGGame
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
-        {
-            ConsoleClass.Justify();
-            Intro.PrintYellowBird();
-            Console.ReadLine();
-            Console.Clear();
-            
-            Map mymap = new Map("60map.txt");
+        public const string MapPath = "60map.txt";
 
-            string heroName=Intro.Name();
-            Console.Clear();
+        public static void Main()
+        {
+            ConsoleClass.SetConsoleSize(); // old name Justify
+
+            // printing intro page
+            Intro.PrintYellowBird();
+
+            string heroName = Hero.EnterName();  // moved from class Intro to Hero + renamed
             Hero myHero = new Hero(heroName, new Coordinates(18, 34), 100);
+
+            Map mymap = new Map(MapPath);
             ConsoleClass.PrintBorders();
-            mymap.PrintAroundPoint(myHero.Position.x, myHero.Position.y);
-            myHero.PrintHero();
             
-            while(true)
+            mymap.PrintAroundPoint(myHero.Position.X, myHero.Position.Y);
+            myHero.PrintHero();
+
+            while (true)
             {
-                
+
                 //TODO:Make methods MoveUp,MoveDown,MoveLeft,MoveRight in the Alive class (abstract in the Alive class, also in the IAlive and in Hero class)!!!!!!!
                 //Methods should use mymap.CanBeStepped() method !!!!
 
-                if(Console.KeyAvailable)
+                if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
 
-                    if(key.Key==ConsoleKey.UpArrow) 
+                    if (key.Key == ConsoleKey.UpArrow)
                     {
-                        if (mymap.CanBeStepped(myHero.Position.x - 1, myHero.Position.y))
+                        if (mymap.CanBeStepped(myHero.Position.X - 1, myHero.Position.Y))
                         {
-                            myHero.Position.x--; 
+                            myHero.Position.X--;
                         }
                     }
                     else if (key.Key == ConsoleKey.DownArrow)           //TODO: MOVE ALL THIS METHODS IN THE HERO CLASS and check if the position is avaliable to step by using
                     {                                                   //mymap.CanBeStepped();
-                        if (mymap.CanBeStepped(myHero.Position.x + 1, myHero.Position.y))
+                        if (mymap.CanBeStepped(myHero.Position.X + 1, myHero.Position.Y))
                         {
-                            myHero.Position.x++;
+                            myHero.Position.X++;
                         }
                     }
                     else if (key.Key == ConsoleKey.LeftArrow)
                     {
-                        if (mymap.CanBeStepped(myHero.Position.x , myHero.Position.y-1))
+                        if (mymap.CanBeStepped(myHero.Position.X, myHero.Position.Y - 1))
                         {
-                            myHero.Position.y--;
+                            myHero.Position.Y--;
                         }
                     }
                     else if (key.Key == ConsoleKey.RightArrow)
                     {
-                        if (mymap.CanBeStepped(myHero.Position.x, myHero.Position.y + 1))
+                        if (mymap.CanBeStepped(myHero.Position.X, myHero.Position.Y + 1))
                         {
-                            myHero.Position.y++;
+                            myHero.Position.Y++;
                         }
                     }
 
-                    if (mymap.Visited[myHero.Position.x, myHero.Position.y] == false)
+                    if (mymap.WasVisited[myHero.Position.X, myHero.Position.Y] == false)
                     {
-                        mymap.PrintAroundPoint(myHero.Position.x, myHero.Position.y);
-                        mymap.Visited[myHero.Position.x, myHero.Position.y] = true;
+                        mymap.PrintAroundPoint(myHero.Position.X, myHero.Position.Y);
+                        mymap.WasVisited[myHero.Position.X, myHero.Position.Y] = true;
                     }
                     myHero.PrintHero();
+
                 }
             }
 
@@ -76,7 +79,7 @@ namespace RPGGame
             // test OK ... - lenchev            
 
             //mymap.PrintWholeMap();
-            MessageBox.Print("Hello, "+myHero.Name);
+            MessageBox.Print("Hello, " + myHero.Name);
             MessageBox.Print("This is  Team Yellow Bird's RPG Game");
             
             Console.ReadLine();
