@@ -2,6 +2,7 @@
 {
 using System;
 using System.IO;
+    using System.Collections.Generic;
 
     public class Map
     {
@@ -14,7 +15,8 @@ using System.IO;
         private string[] currentLine;  // old name map
         private string[,] mapMatrix;
         private bool[,] wasVisited;
-
+        private List<Coordinates> givenRandomNumbers= new List<Coordinates>();
+        
         //ADD A BOOL MATRIX TO CHECK IF HAS BEEN THERE 
         // TO DO: integrate the above
 
@@ -26,6 +28,10 @@ using System.IO;
             get
             {
                 return (string[,])this.mapMatrix.Clone(); //Returning new matrix to protect the original
+            }
+            set
+            {
+                this.mapMatrix = value;
             }
         }
 
@@ -92,6 +98,52 @@ using System.IO;
             }
 
         }
+
+        public void PrintMatrix()
+        {
+            Console.SetCursorPosition(0, 0);
+            for (int i = 0; i < ConsoleClass.HorizontalLinePosition; i++)
+            {
+                for (int j = 0; j < ConsoleClass.VerticalLinePosition; j++)
+                {
+                    Console.Write(this.MapMatrix[i,j]);
+                }
+                Console.WriteLine();
+            }
+        }
+        public Coordinates RandomFreePosition()
+        {
+            int seed = int.Parse((DateTime.Now.Ticks%100000).ToString());
+            System.Threading.Thread.Sleep(5);
+            Random randomGenerator = new Random(seed);
+            int x, y;
+            x = randomGenerator.Next(ConsoleClass.HorizontalLinePosition);
+            y = randomGenerator.Next(ConsoleClass.VerticalLinePosition);
+            while(!this.CanBeStepped(x,y))
+            {
+                x = randomGenerator.Next(ConsoleClass.HorizontalLinePosition);
+                y = randomGenerator.Next(ConsoleClass.VerticalLinePosition);
+
+            }
+            return new Coordinates(x, y);
+        }
+
+        public void InputCreaturesInMap(List<Creeper> creepers)
+        {
+            foreach (var creep in creepers)
+            {
+                int creeperNumber = 0;
+                if (creep.GetType().Name == "Goblin")
+                {
+                    creeperNumber = 5;
+                }
+                else if (creep.GetType().Name == "Orc")
+                {
+                    creeperNumber = 6;
+                }
+                this.mapMatrix[creep.Position.X, creep.Position.Y] = creeperNumber.ToString();
+            }
+        }
         public void PrintAroundPoint(int x,int y)
         {
             for (int i = x-3; i <=x+3; i++)
@@ -124,26 +176,6 @@ using System.IO;
                     }
                 }
             }
-            //for (int i = x - 1; i <= x + 1; i++)
-            //{
-            //    for (int j = y - 5; j <= y + 5; j++)
-            //    {
-            //        if (i >= 0 && i < ConsoleClass.HorizontalLinePosition && j >= 0 && j < ConsoleClass.VerticalLinePosition)
-            //        {
-            //            PrintColor(i, j);
-            //        }
-            //    }
-            //}
-            //for (int i = x - 5; i <= x + 5; i++)
-            //{
-            //    for (int j = y - 1; j <= y + 1; j++)
-            //    {
-            //        if (i >= 0 && i < ConsoleClass.HorizontalLinePosition && j >= 0 && j < ConsoleClass.VerticalLinePosition)
-            //        {
-            //            PrintColor(i, j);
-            //        }
-            //    }
-            //}
         }
 
         public void PrintColor(int x, int y)
@@ -163,6 +195,14 @@ using System.IO;
             {
                 Console.BackgroundColor = ConsoleColor.DarkGray;
                 Console.Write(" ");
+            }
+            else if (mapMatrix[x, y] == "5")
+            {
+                Console.Write("g");
+            }
+            else if (mapMatrix[x, y] == "6")
+            {
+                Console.Write("O");
             }
             else if (mapMatrix[x, y] == "4")
             {

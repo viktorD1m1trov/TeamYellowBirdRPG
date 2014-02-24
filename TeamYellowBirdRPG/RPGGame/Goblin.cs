@@ -31,7 +31,7 @@ namespace RPGGame
         public override int Damage { get; protected set; }
 
 
-        public Goblin(string name, Coordinates position, int health,int damage)
+        public Goblin(string name,Coordinates position)
         {
             this.Name = name;
             this.Position = position;

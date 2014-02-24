@@ -22,12 +22,25 @@ namespace RPGGame
             ConsoleClass.PrintBorders();
 
 
+            List<Creeper> creepers = new List<Creeper>();
+            for (int i = 0; i < 5; i++)
+            {
+                creepers.Add(new Orc("Orc"+(i+1), mymap.RandomFreePosition()));
+                //Console.WriteLine(creepers[i].Name);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                creepers.Add(new Goblin("Goblin" + (i + 1), mymap.RandomFreePosition()));
+            }
+
             mymap.PrintAroundPoint(myHero.Position.X, myHero.Position.Y);
             myHero.PrintHero();
-            MessageBox.Print("Hello, " + myHero.Name);
-            MessageBox.Print("This is  Team Yellow Bird's RPG Game");
-            MessageBox.Print("Enjoy !");
+            //MessageBox.Print("Hello, " + myHero.Name);
+            //MessageBox.Print("This is  Team Yellow Bird's RPG Game");
+            //MessageBox.Print("Enjoy !");
 
+            mymap.InputCreaturesInMap(creepers);
+            //mymap.PrintMatrix();
             while (true)
             {
 
@@ -73,7 +86,6 @@ namespace RPGGame
                         mymap.WasVisited[myHero.Position.X, myHero.Position.Y] = true;
                     }
                     myHero.PrintHero();
-
                 }
             }
 

@@ -32,7 +32,7 @@ namespace RPGGame
         public override int Damage { get; protected set; }
 
 
-        public Orc(string name, Coordinates position, int health,int damage)
+        public Orc(string name,Coordinates position)
         {
             this.Name = name;
             this.Position = position;

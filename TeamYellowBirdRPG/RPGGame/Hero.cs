@@ -8,6 +8,7 @@ namespace RPGGame
 {
     public class Hero : Alive, IAlive
     {
+        public static Coordinates startingPoint = new Coordinates(18, 34);
         public override string Name
         {
             get
@@ -33,7 +34,7 @@ namespace RPGGame
         public Hero(string name)
         {
             this.Name = name;
-            this.Position = new Coordinates(18, 34);
+            this.Position = startingPoint;
             this.Health = 100;
             this.Damage = 10;
         }
