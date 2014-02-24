@@ -16,7 +16,7 @@ namespace RPGGame
             Intro.PrintYellowBird();
 
             string heroName = Hero.EnterName();  // moved from class Intro to Hero + renamed
-            Hero myHero = new Hero(heroName, new Coordinates(18, 34), 100);
+            Hero myHero = new Hero(heroName);
 
             Map mymap = new Map(MapPath);
             ConsoleClass.PrintBorders();
@@ -42,28 +42,28 @@ namespace RPGGame
                     {
                         if (mymap.CanBeStepped(myHero.Position.X - 1, myHero.Position.Y))
                         {
-                            myHero.Position.X--;
+                            myHero.MoveUp();
                         }
                     }
                     else if (key.Key == ConsoleKey.DownArrow)           //TODO: MOVE ALL THIS METHODS IN THE HERO CLASS and check if the position is avaliable to step by using
                     {                                                   //mymap.CanBeStepped();
                         if (mymap.CanBeStepped(myHero.Position.X + 1, myHero.Position.Y))
                         {
-                            myHero.Position.X++;
+                            myHero.MoveDown();
                         }
                     }
                     else if (key.Key == ConsoleKey.LeftArrow)
                     {
                         if (mymap.CanBeStepped(myHero.Position.X, myHero.Position.Y - 1))
                         {
-                            myHero.Position.Y--;
+                            myHero.MoveLeft();
                         }
                     }
                     else if (key.Key == ConsoleKey.RightArrow)
                     {
                         if (mymap.CanBeStepped(myHero.Position.X, myHero.Position.Y + 1))
                         {
-                            myHero.Position.Y++;
+                            myHero.MoveRight();
                         }
                     }
 

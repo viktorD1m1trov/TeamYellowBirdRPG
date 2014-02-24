@@ -28,11 +28,14 @@ namespace RPGGame
 
         public override int Health { get; protected set; }
 
-        public Hero(string name, Coordinates position, int health)
+        public override int Damage{ get; protected set; }
+
+        public Hero(string name)
         {
             this.Name = name;
-            this.Position = position;
-            this.Health = health;
+            this.Position = new Coordinates(18, 34);
+            this.Health = 100;
+            this.Damage = 10;
         }
 
 
@@ -53,5 +56,7 @@ namespace RPGGame
         }
         
         //OVERRIDE MOVEMENT METHODS HERE
+
+
     }
 }

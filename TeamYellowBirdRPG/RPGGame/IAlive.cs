@@ -7,5 +7,7 @@ namespace RPGGame
         string Name { get; }
         Coordinates Position { get; set; }
         int Health { get; }
+
+        int Damage { get; }
     }
 }
