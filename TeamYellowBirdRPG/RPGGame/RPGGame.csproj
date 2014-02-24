@@ -44,19 +44,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alive.cs" />
+    <Compile Include="Coin.cs" />
     <Compile Include="ConsoleClass.cs" />
     <Compile Include="Coordinates.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Creeper.cs" />
     <Compile Include="Goblin.cs" />
+    <Compile Include="HealingPotion.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="IAlive.cs" />
     <Compile Include="ICreeper.cs" />
     <Compile Include="Intro.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MessageBox.cs" />
     <Compile Include="Orc.cs" />
+    <Compile Include="Potion.cs" />
     <Compile Include="Print.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
