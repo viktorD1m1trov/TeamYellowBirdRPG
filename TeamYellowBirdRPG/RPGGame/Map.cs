@@ -119,7 +119,9 @@ using System.IO;
             int x, y;
             x = randomGenerator.Next(ConsoleClass.HorizontalLinePosition);
             y = randomGenerator.Next(ConsoleClass.VerticalLinePosition);
-            while(!this.CanBeStepped(x,y))
+            while((!this.CanBeStepped(x,y)) || 
+                Math.Abs(decimal.Parse((x-Hero.startingPoint.X).ToString()))<5 || 
+                Math.Abs(decimal.Parse((y-Hero.startingPoint.Y).ToString()))<5)
             {
                 x = randomGenerator.Next(ConsoleClass.HorizontalLinePosition);
                 y = randomGenerator.Next(ConsoleClass.VerticalLinePosition);
